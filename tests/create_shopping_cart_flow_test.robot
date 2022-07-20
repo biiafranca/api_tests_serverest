@@ -1,7 +1,7 @@
 *** Settings ***
-Resource         resources/send_request_to_api.resource
-Resource         resources/analyze_api_response.resource
-Resource         resources/generate_random_data.resource
+Resource         ../resources/send_request_to_api.resource
+Resource         ../resources/analyze_api_response.resource
+Resource         ../resources/generate_random_data.resource
 
 
 *** Test Cases ***
