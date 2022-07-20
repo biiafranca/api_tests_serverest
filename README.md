@@ -86,3 +86,10 @@ Para executar uma suíte de testes específicas:
 Para executar um teste específico:
 
     $ robot -d ./diretorio/de/resultados -t "nome do teste" diretorio/de/testes/test_name.robot
+    
+## TODO
+
+* Instruções para analisar os relatórios de resultado
+* Considerações sobre a organização do projeto, e justificativa de determinadas escolhas
+* Publicação do Dockerfile, para conteinerização do projeto
+* Desafio de teste de performance da API
