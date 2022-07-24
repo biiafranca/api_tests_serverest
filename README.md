@@ -87,9 +87,14 @@ Para executar um teste específico:
 
     $ robot -d ./diretorio/de/resultados -t "nome do teste" diretorio/de/testes/test_name.robot
     
-## TODO
+## Execução Via Docker
 
-* Instruções para analisar os relatórios de resultado
-* Considerações sobre a organização do projeto, e justificativa de determinadas escolhas
-* Publicação do Dockerfile, para conteinerização do projeto
-* Desafio de teste de performance da API
+É possivel executar os testes via Docker através do script contido em docker_run_tests.py, que cria uma imagem através do Dockerfile do projeto, executa o container e roda os testes.
+
+Para isto, estando no diretório do projeto, digite o comando:
+
+    $ python docker_run_tests.py
+    
+Observações:
+- Necessário ter o Docker e Python instalados
+- Acesse o diretório "results" para acessar os logs da execução.
