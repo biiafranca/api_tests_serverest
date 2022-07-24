@@ -4,9 +4,13 @@ import subprocess
 subprocess.run('docker build -t run_robot ./', shell=True, capture_output=True)
 
 local_path = Path().absolute()
+tests_path = local_path.joinpath("tests")
+results_path = local_path.joinpath("results")
+resources_path = local_path.joinpath("resources")
 
-subprocess.run(f'docker run --rm --name executa_robot -v {local_path}/tests:/opt/robotframework/tests'
-               f' -v {local_path}/results:/opt/robotframework/results'
-               f' -v {local_path}/resources:/opt/robotframework/resources run_robot:latest robot -d'
-               f' /opt/robot/framework/results /opt/robotframework/tests',
+subprocess.run(f'docker run --rm --name executa_robot'
+               f' -v "{tests_path}":/opt/robotframework/tests'
+               f' -v "{results_path}":/opt/robotframework/results'
+               f' -v "{resources_path}":/opt/robotframework/resources'
+               f' run_robot:latest robot -d /opt/robotframework/results /opt/robotframework/tests',
                shell=True, capture_output=False)
