@@ -98,3 +98,10 @@ Para isto, estando no diretório do projeto, digite o comando:
 Observações:
 - Necessário ter o Docker e Python instalados
 - Acesse o diretório "results" para acessar os logs da execução.
+
+
+## Interpretação dos resultados
+
+Além do resultado exibido no console, o Robot Framework gera arquivos de Log e Report, para que o testador tenha mais detalhes da execução.
+
+Para dicas de interpretação desses resultados, consulte a página: https://medium.com/@mayfernandes/season-running-ep-01-log-e-report-de-execu%C3%A7%C3%A3o-do-robot-framework-4119d8b37bab
