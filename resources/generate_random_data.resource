@@ -61,33 +61,4 @@ Generate A Valid User to Request Body
     ...                              ${PASSWORD_KEY}=${PASSWORD_VALUE}
     ...                              ${ADM_KEY}=${ADM_VALUE}
     Set Test Variable                ${REQUEST_BODY}
-
-Generate Login Body With ${REQUEST_EMAIL} And ${REQUEST_PASSWORD}
-    ${REQUEST_BODY} =                Create Dictionary
-    ...                              ${EMAIL_KEY}=${REQUEST_EMAIL}
-    ...                              ${PASSWORD_KEY}=${REQUEST_PASSWORD}
-    Set Test Variable                ${REQUEST_BODY}
-
-Generate A Valid Product to Request Body
-    ${NAME_VALUE} =                  Generate Random Name
-    ${PRICE_VALUE} =                 Generate Random Integer
-    ${DESCRIPTION_VALUE} =           Generate Random Description
-    ${QUANTITY_VALUE} =              Generate Random Integer
-    ${REQUEST_BODY} =                Create Dictionary
-    ...                              ${NAME_KEY}=${NAME_VALUE}
-    ...                              ${PRICE_KEY}=${PRICE_VALUE}
-    ...                              ${DESCRIPTION_KEY}=${DESCRIPTION_VALUE}
-    ...                              ${QUANTITY_KEY}=${QUANTITY_VALUE}
-    Set Test Variable                ${REQUEST_BODY}
-
-Generate A Valid Cart With Items ${FIRST_PRODUCT} And ${SECOND_PRODUCT} To Request Body
-    ${PRODUCT_LIST} =                Create List
-    FOR    ${PRODUCT}    IN    ${FIRST_PRODUCT}    ${SECOND_PRODUCT}
-        ${PRODUCT_DICT} =            Create Dictionary
-        ...                          ${PRODUCT_ID_KEY}=${PRODUCT}
-        ...                          ${QUANTITY_KEY}=${1}
-        Append To List               ${PRODUCT_LIST}          ${PRODUCT_DICT}
-    END
-    ${REQUEST_BODY} =                Create Dictionary
-    ...                              ${PRODUCTS_KEY}=${PRODUCT_LIST}
-    Set Test Variable                ${REQUEST_BODY}
+    
