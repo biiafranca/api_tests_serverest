@@ -1,10 +1,11 @@
 *** Settings ***
-Library                    RequestsLibrary
-Resource                   generate_random_data.resource
-Resource                   manipulate_data.resource
+Library                      RequestsLibrary
+
 
 *** Variables ***
-${URL}               https://serverest.dev
+${URL}                       https://serverest.dev
+${REQUEST_BODY}
+
 
 *** Keywords ***
 Send GET Request to ${URI}
@@ -13,7 +14,7 @@ Send GET Request to ${URI}
                               ...                    expected_status=anything
     Set Test Variable         ${RESPONSE}
 
-Send POST Request to ${URI} With Valid Body
+Send POST Request to ${URI}
     ${TOKEN} =                Get Variable Value     $TOKEN        ${EMPTY}
     IF  "${TOKEN}" != "${EMPTY}"
         ${TOKEN} =            Create Dictionary      authorization=${TOKEN}
@@ -25,39 +26,7 @@ Send POST Request to ${URI} With Valid Body
                               ...                    headers=${TOKEN}
     Set Test Variable         ${RESPONSE}
 
-Send POST Request to ${URI} Removing Key ${KEY} From Body
-    ${REQUEST_BODY} =         Set Request Body ${REQUEST_BODY} Without ${KEY}
-    ${RESPONSE} =             POST                   ${URL}${URI}
-                              ...                    timeout=1
-                              ...                    json=${REQUEST_BODY}
-                              ...                    expected_status=anything
-    Set Test Variable         ${RESPONSE}
-
-Send POST Request to ${URI} With Key ${KEY} Containing Value "${VALUE}"
-    ${REQUEST_BODY} =         Set Request Body ${REQUEST_BODY} Changing Value Of Key ${KEY} To ${VALUE}
-    ${RESPONSE} =             POST                   ${URL}${URI}
-                              ...                    timeout=1
-                              ...                    json=${REQUEST_BODY}
-                              ...                    expected_status=anything
-    Set Test Variable         ${RESPONSE}
-
-Send PUT Request to ${URI} With Valid Body
-    ${RESPONSE} =             PUT                    ${URL}${URI}
-                              ...                    timeout=1
-                              ...                    json=${REQUEST_BODY}
-                              ...                    expected_status=anything
-    Set Test Variable         ${RESPONSE}
-
-Send PUT Request to ${URI} Removing Key ${KEY} From Body
-    ${REQUEST_BODY} =         Set Request Body ${REQUEST_BODY} Without ${KEY}
-    ${RESPONSE} =             PUT                    ${URL}${URI}
-                              ...                    timeout=1
-                              ...                    json=${REQUEST_BODY}
-                              ...                    expected_status=anything
-    Set Test Variable         ${RESPONSE}
-
-Send PUT Request to ${URI} With Key ${KEY} Containing Value ${VALUE}
-    ${REQUEST_BODY} =         Set Request Body ${REQUEST_BODY} Changing Value Of Key ${KEY} To ${VALUE}
+Send PUT Request to ${URI}
     ${RESPONSE} =             PUT                    ${URL}${URI}
                               ...                    timeout=1
                               ...                    json=${REQUEST_BODY}

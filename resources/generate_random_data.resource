@@ -1,25 +1,14 @@
 *** Settings ***
-Library      FakerLibrary
+Library                  FakerLibrary
+Resource                 manipulate_data.resource
 
 
 *** Variables ***
-# Generic Keys
 ${NAME_KEY}              nome
-
-# Users Keys
 ${ID_KEY}                _id
 ${EMAIL_KEY}             email
 ${PASSWORD_KEY}          password
 ${ADM_KEY}               administrador
-
-# Product Keys
-${PRICE_KEY}             preco
-${DESCRIPTION_KEY}       descricao
-${QUANTITY_KEY}          quantidade
-${PRODUCT_ID_KEY}        idProduto
-${PRODUCTS_KEY}          produtos
-
-# Login Keys
 ${AUTH_KEY}              authorization
 
 *** Keywords ***
@@ -61,4 +50,13 @@ Generate A Valid User to Request Body
     ...                              ${PASSWORD_KEY}=${PASSWORD_VALUE}
     ...                              ${ADM_KEY}=${ADM_VALUE}
     Set Test Variable                ${REQUEST_BODY}
-    
+
+Generate A User Without Key ${KEY} to Request Body
+    Generate A Valid User to Request Body    
+    ${REQUEST_BODY} =         Set Request Body ${REQUEST_BODY} Without ${KEY}
+    Set Test Variable         ${REQUEST_BODY}
+
+Generate A User With Key ${KEY} Containing Value "${VALUE}"
+    Generate A Valid User to Request Body
+    ${REQUEST_BODY}=          Set Request Body ${REQUEST_BODY} Changing Value Of Key ${KEY} To ${VALUE}
+    Set Test Variable         ${REQUEST_BODY}

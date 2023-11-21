@@ -1,7 +1,10 @@
 *** Settings ***
 Library              Collections
 Library              RequestsLibrary
+Resource             generate_random_data.resource
 
+*** Variables ***
+${RESPONSE}
 
 *** Keywords ***
 

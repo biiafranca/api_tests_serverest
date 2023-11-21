@@ -26,37 +26,37 @@ GET Request Contains All Users With Required Infos
 
 POST Request Contains Return
     Given Generate A Valid User to Request Body
-    When Send POST Request to /usuarios With Valid Body
+    When Send POST Request to /usuarios
     Then Status Code Should Be "201"
     And Body Response Not Should Be Empty
 
 POST Request Contains Required Content In Response Body
     Given Generate A Valid User to Request Body
-    When Send POST Request to /usuarios With Valid Body
+    When Send POST Request to /usuarios
     Then Body Response Contains "message"
     And Body Response Contains "_id"
     And Body Response Contains Message "Cadastro realizado com sucesso"
 
 POST Request Without Required User Name
-    Given Generate A Valid User to Request Body
-    When Send POST Request to /usuarios Removing Key ${NAME_KEY} From Body
-    And Status Code Should Be "400"
+    Given Generate A User Without Key ${NAME_KEY} to Request Body   
+    When Send POST Request to /usuarios
+    Then Status Code Should Be "400"
 
 POST Request With Invalid E-mail
-    Given Generate A Valid User to Request Body
-    When Send POST Request to /usuarios With Key ${EMAIL_KEY} Containing Value "ThisIsAnInvalidEmail"
-    And Status Code Should Be "400"
+    Given Generate A User With Key ${EMAIL_KEY} Containing Value "ThisIsAnInvalidEmail"
+    When Send POST Request to /usuarios
+    Then Status Code Should Be "400"
 
 GET Request Of Created User
     Given Generate A Valid User to Request Body
-    And Send POST Request to /usuarios With Valid Body
+    And Send POST Request to /usuarios
     And Identify ID Of Created Resource
     When Send GET Request To /usuarios/${TEST_ID}
     Then Status Code Should Be "200"
 
 DELETE Request Of Created User
     Given Generate A Valid User to Request Body
-    And Send POST Request to /usuarios With Valid Body
+    And Send POST Request to /usuarios
     And Identify ID Of Created Resource
     When Send DELETE Request To /usuarios/${TEST_ID}
     Then Status Code Should Be "200"
@@ -65,16 +65,16 @@ DELETE Request Of Created User
 
 PUT Request Contains Return
     Given Generate A Valid User to Request Body
-    And Send POST Request to /usuarios With Valid Body
+    And Send POST Request to /usuarios
     And Identify ID Of Created Resource
-    When Send PUT Request to /usuarios/${TEST_ID} With Valid Body
+    When Send PUT Request to /usuarios/${TEST_ID}
     Then Status Code Should Be "200"
     And Body Response Not Should Be Empty
 
 PUT Request Contains Required Content In Response Body
     Given Generate A Valid User to Request Body
-    And Send POST Request to /usuarios With Valid Body
+    And Send POST Request to /usuarios
     And Identify ID Of Created Resource
-    When Send PUT Request to /usuarios/${TEST_ID} With Valid Body
+    When Send PUT Request to /usuarios/${TEST_ID}
     Then Body Response Contains "message"
     And Body Response Contains Message "Registro alterado com sucesso"
