@@ -26,18 +26,13 @@ Generate Random Password
     [Return]                        ${RANDOM_PASSWORD}
 
 Generate Random Administrator
-    @{VALID_OPTIONS_LIST} =          Create List           true          false
-    ${CHOSEN_OPTION_INDEX} =         FakerLibrary.Pyint    min_value=0   max_value=1
-    ${RANDOM_ADM} =                  Set Variable          ${VALID_OPTIONS_LIST}[${CHOSEN_OPTION_INDEX}]
+    @{VALID_OPTIONS_LIST} =          Create List           
+    ...                              true          false
+    ${CHOSEN_OPTION_INDEX} =         FakerLibrary.Pyint
+    ...                              min_value=0   max_value=1
+    ${RANDOM_ADM} =                  Set Variable 
+    ...                              ${VALID_OPTIONS_LIST}[${CHOSEN_OPTION_INDEX}]
     [Return]                         ${RANDOM_ADM}
-
-Generate Random Description
-    ${RANDOM_DESCRIPTION} =          FakerLibrary.Sentence
-    [Return]                         ${RANDOM_DESCRIPTION}
-
-Generate Random Integer
-    ${RANDOM_QUANTITY} =             FakerLibrary.Pyint
-    [Return]                         ${RANDOM_QUANTITY}
 
 Generate A Valid User to Request Body
     ${NAME_VALUE} =                  Generate Random Name

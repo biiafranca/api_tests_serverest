@@ -1,7 +1,6 @@
 *** Settings ***
 Resource         ../resources/send_request_to_api.resource
 Resource         ../resources/analyze_api_response.resource
-
 Force Tags       robot:continue-on-failure
 
 
